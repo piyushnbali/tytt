@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  {% load static %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VIIT TIMETABLE</title>
+  <!--Google font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps&display=swap" rel="stylesheet">
+  <!-- App css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  
+  
+   
+  <!-- Responsive css -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    
+    <div class="card">
+
+        <form  method="post" action="{% url 'register' %}" onsubmit="return validateForm()" >
+          {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Roll no</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="roll_no" name="roll_no" value="0">
+              </div>
+              <div class="form-group">
+                <label for="IOT">IOT</label>
+                <select class="form-control" id="IOT" name="IOT">
+                  <option selected value="IOTA">IOT-A</option>
+                  <option value="IOTB">IOT-B</option>
+                  <option value="IOTC">IOT-C</option>
+                  <option value="IOTD">IOT-D</option>
+                </select>
+                <label for="IOTL">IOT-Lab</label>
+                <select class="form-control" id="IOTL" name="IOTL">
+                  <option selected value="IOTA1">IOT-A1</option><option value="IOTA2">IOT-A2</option><option value="IOTA3">IOT-A3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="OB">OB</label>
+                <select class="form-control" id="OB" name="OB">
+                  <option selcted value="OBA">OB-A</option>
+                  <option value="OBB">OB-B</option>
+                  <option value="OBC">OB-C</option>
+                  <option value="OBD">OB-D</option>
+                </select>
+               
+              </div>
+              <div class="form-group">
+                <label for="PE_2">PE_2</label>
+                <select class="form-control" id="PE_2" name="PE_2">
+                  <option selected value="AIDAD">AI-AD</option>
+                  <option value="AIDBC">AI-BC</option>
+                  <option value="CN">CN</option>
+                  <option value="CC">ClOUD-COMPUTING</option>
+                </select>
+                <label for="PE_2L">PE_2L</label>
+                <select class="form-control" id="PE_2L" name="PE_2L">
+                  <option selected value="AIE1"> AI-E1</option><option value="AIE2"> AI-E2</option><option value="AIE3"> AI-E3</option><option value="AIE4"> AI-E4</option><option value="AIE5"> AI-E5</option><option value="AIE6"> AI-E6</option><option value="AIE7"> AI-E7</option>
+                  </select>
+               
+              </div>
+              <div class="form-group">
+                <label for="PE_3">PE_3</label>
+                <select class="form-control" id="PE_3" name="PE_3">
+                  <option selected  value="SCD1">SOFT-COMPUTING D1</option>
+                  <option value="SCD2">SOFT-COMPUTING D2</option>
+                  <option value="BT">BLOCKCHAIN</option>
+                  <option value="SDA">SDA</option>
+                </select>
+                <label for="PE_3L">PE_3L</label>
+                <select class="form-control" id="PE_3L" name="PE_3L">
+                  <option selected value="SCB1">SC-B1</option><option value="SCB2">SC-B2</option><option value="SCB3">SC-B3</option>
+                  </select>
+               
+              </div>
+              <div class="form-group">
+                <label for="OE">OPEN ELECTIVE</label>
+                <select class="form-control" id="OE" name="OE">
+                  <option   value="ICSD1">ICS D1</option>
+                  <option value="ICSD2">ICS D2</option>
+                  <option value="ICSD3">ICS D3</option>
+                  <option value="SMA">SMA</option>
+                  <option value="IE">IE</option>
+                  <option value="AE">AE</option>
+                  <option value="ANN">ANN</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ES">EMP SKILL</label>
+                <select class="form-control" id="ES" name="ES">
+                  <option selected  value="ANDD1">AND D1</option>
+                  <option value="ANDD2">AND D2</option>
+                  <option value="UIT">USER-INTERFACE</option>
+                  <option value="WD">WEB DESIGN</option>
+                </select>
+                <label for="ESL">EMP SKILL Lab</label>
+                <select class="form-control" id="ESL" name="ESL">
+                  <option selected value="ANDB1">ANDROID B1</option><option value="ANDB2">ANDROID B2</option><option value="ANDB3">ANDROID B3</option>
+                  
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+
+   
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+    <script>
+    function validateForm() {
+  var z = confirm("Are you sure you want to submit! Once submitted, you wont be allowed to edit directly!");
+  return z;
+  }
+
+  $(document).ready(function(){
+
+      $('#IOT').change(function()
+      { var val=$(this).val();
+        if(val=='IOTA')
+        {
+            $('#IOTL').html('<option selected value="IOTA1">IOT-A1</option><option value="IOTA2">IOT-A2</option><option value="IOTA3">IOT-A3</option>')
+        }
+        if(val=='IOTB')
+        {
+            $('#IOTL').html('<option selected value="IOTB1">IOT-B1</option><option value="IOTB2">IOT-B2</option><option value="IOTB3">IOT-B3</option>')
+        }
+      if(val=='IOTC')
+        {
+            $('#IOTL').html('<option selected value="IOTC1">IOT-C1</option><option value="IOTC2">IOT-C2</option><option value="IOTC3">IOT-C3</option>')
+        }
+
+        if(val=='IOTD')
+        {
+            $('#IOTL').html('<option selected value="IOTD1">IOT-D1</option><option value="IOTD2">IOT-D2</option><option value="IOTD3">IOT-D3</option>')
+        }
+    });
+    
+     $('#PE_3').change(function()
+      { var val=$(this).val();
+        console.log(val);
+        if(val=='SCD1')
+        {
+            $('#PE_3L').html('<option selected value="SCB1">SC-B1</option><option value="SCB2">SC-B2</option><option value="SCB3">SC-B3</option>')
+        }
+        if(val=='SCD2')
+        {
+            $('#PE_3L').html('<option selected value="SCB4">SC-B4</option><option value="SCB5">SC-B5</option><option value="SCB6">SC-B6</option>')
+        }
+      if(val=='BT')
+        {
+            $('#PE_3L').html('<option selected value="BTB7">BT-B7</option><option value="BTB8">BT_B8</option><option value="BTB9">BT_B9</option><option value="BTB10">BT_B10</option>')
+        }
+
+        if(val=='SDA')
+        {
+            $('#PE_3L').html('<option selected value="SDAB11">SDA-B11</option><option value="SDAB12">SDA-B12</option>')
+        }
+    });
+
+     $('#PE_2').change(function(){
+
+        var val = $(this).val();
+        
+        if(val=='AIDBC')
+        {    
+            $('#PE_2L').html('<option selected value="AIE1"> AI-E1</option><option value="AIE2"> AI-E2</option><option value="AIE3"> AI-E3</option><option value="AIE4"> AI-E4</option><option value="AIE5"> AI-E5</option><option value="AIE6"> AI-E6</option><option value="AIE7"> AI-E7</option>')
+        }
+        if(val=='AIDAD')
+        {
+            $('#PE_2L').html('<option selected value="AIE1"> AI-E1</option><option value="AIE2"> AI-E2</option><option value="AIE3"> AI-E3</option><option value="AIE4"> AI-E4</option><option value="AIE5"> AI-E5</option><option value="AIE6"> AI-E6</option><option value="AIE7"> AI-E7</option>')
+        }
+        if(val=='CN')
+        {
+            $('#PE_2L').html('<option selected value="CNE8"> AI-E8</option>')
+        }
+        if(val=='CC')
+        {
+            $('#PE_2L').html('<option selected value="CCE9"> CC-E9</option><option  value="CCE10"> CC-E10</option><option  value="CCE11"> CC-E11</option><option  value="CCE12"> CC-E12</option>')
+        }
+    });
+
+     $('#ES').change(function(){
+        var val= $(this).val();
+        if(val =='ANDD1')
+        {
+            $('#ESL').html('<option selected value="ANDB1">ANDROID B1</option><option value="ANDB2">ANDROID B2</option><option value="ANDB3">ANDROID B3</option>')
+        }
+        if(val =='ANDD2')
+        {
+            $('#ESL').html('<option selected value="ANDB4">ANDROID B4</option><option value="ANDB5">ANDROID B5</option><option value="ANDB6">ANDROID B6</option>')
+        }
+        if(val=="UIT"){
+            $('#ESL').html('<option selected value="UITB7">UIT-B7</option><option value="UITB8">UIT-B8</option><option value="UITB9">UIT-B9</option>')
+
+        }
+        if(val=="WD"){
+            $('#ESL').html('<option selected value="WD10">WD-B10</option><option value="WDB11">WD-B11</option><option value="WDB12">WD-B12</option>')
+
+        }
+    });
+  });
+    </script>
+</body>
+</html>
