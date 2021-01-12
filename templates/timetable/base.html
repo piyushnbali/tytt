@@ -24,32 +24,39 @@
    
   <!-- Responsive css -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    .lecture p {
+       font-size: larger;
+       color: darkred;
+    }
+  </style
 </head>
 <body>
   <div class="container-fluid">
     {% csrf_token %}
 
     <div class="row">
-      <div class="col-6 p-5">
-      <input type="text"  class="p-5 border border-danger border-3"id="myInput" >
+      <div class="col p-2">
+      <input type="text"  class="p-2 border border-danger border-3"id="myInput" placeholder="Enter Roll No">
       </div>
-      <div class="col-6 p-5">
-    <button type="button"  class="btn btn-primary "id="myBtn">Click me</button>
+      <div class="col p-2">
+        <div class="text-center">
+       <button type="button"  class="btn btn-primary m-auto text-center"id="myBtn">Lecture</button>
        </div>
-       <div class="row">
-         
-       
-         
-         </div>
+       </div>
     </div>
     <div class="row">
-      <div class="col-6 p-5">
+      <div class="col p-2">
+        <p>Click on lecture. To attend lecture.If you have not registered.<a href="register">Register Here</a> Current lecture will appear below</p>
+        <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;"><img src='https://image.freepik.com/free-vector/loading-icon_167801-436.jpg' width="64" height="64" /><br>Loading..</div>
        <div class="lecture">
          
       </div>
       </div>
-      <div class="col-6 p-5">
-       <a class="lecture-link"  target="_blank"><button type="button"  class="btn btn-danger "id="myBtn">Attend</button></a>
+      <div class="col p-2">
+        <div class="text-center">
+       <a class="lecture-link "  target="_blank"><button type="button"  class="btn btn-danger "id="myBtn">Attend</button></a>
+       </div>
        </div>
     </div>
   </div>
@@ -59,6 +66,12 @@
 
     <script>
      $(document).ready(function(){
+      $(document).ajaxStart(function(){
+    $("#wait").css("display", "block");
+  });
+  $(document).ajaxComplete(function(){
+    $("#wait").css("display", "none");
+  });
         $('#myBtn').click(function()
         {
           var roll_no=$("#myInput").val()
@@ -83,10 +96,10 @@
           method : 'POST',
          
           success: function (data) {
-            $('.lecture').html("<p>ON going lecture is "+data.lecture+ "</p>")
+            $('.lecture').html("<p>"+data.lecture+ "</p>")
             $('.lecture-link').attr("href",data.link)
           },
-          error: function (data) { alert("NO LECture");}
+          error: function (data) { alert("Error in database. Register again or Contact admin");}
 });
       
           

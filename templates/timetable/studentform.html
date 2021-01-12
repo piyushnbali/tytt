@@ -28,15 +28,15 @@
 <body>
   <div class="container-fluid">
     
-    <div class="card">
+    <div class="card p-5">
 
         <form  method="post" action="{% url 'register' %}" onsubmit="return validateForm()" >
           {% csrf_token %}
-            <div class="form-group">
+            <div class="form-group p-2">
                 <label for="exampleFormControlInput1">Roll no</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="roll_no" name="roll_no" value="0">
+                <input type="text" class="form-control col-sm-2" id="exampleFormControlInput1" placeholder="roll_no" name="roll_no" value="0">
               </div>
-              <div class="form-group">
+              <div class="form-group p-2">
                 <label for="IOT">IOT</label>
                 <select class="form-control" id="IOT" name="IOT">
                   <option selected value="IOTA">IOT-A</option>
@@ -49,7 +49,7 @@
                   <option selected value="IOTA1">IOT-A1</option><option value="IOTA2">IOT-A2</option><option value="IOTA3">IOT-A3</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group p-3">
                 <label for="OB">OB</label>
                 <select class="form-control" id="OB" name="OB">
                   <option selcted value="OBA">OB-A</option>
@@ -59,7 +59,7 @@
                 </select>
                
               </div>
-              <div class="form-group">
+              <div class="form-group p-3">
                 <label for="PE_2">PE_2</label>
                 <select class="form-control" id="PE_2" name="PE_2">
                   <option selected value="AIDAD">AI-AD</option>
@@ -73,7 +73,7 @@
                   </select>
                
               </div>
-              <div class="form-group">
+              <div class="form-group p-3">
                 <label for="PE_3">PE_3</label>
                 <select class="form-control" id="PE_3" name="PE_3">
                   <option selected  value="SCD1">SOFT-COMPUTING D1</option>
@@ -87,7 +87,7 @@
                   </select>
                
               </div>
-              <div class="form-group">
+              <div class="form-group p-3">
                 <label for="OE">OPEN ELECTIVE</label>
                 <select class="form-control" id="OE" name="OE">
                   <option   value="ICSD1">ICS D1</option>
@@ -99,7 +99,7 @@
                   <option value="ANN">ANN</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group p-3">
                 <label for="ES">EMP SKILL</label>
                 <select class="form-control" id="ES" name="ES">
                   <option selected  value="ANDD1">AND D1</option>
@@ -113,7 +113,9 @@
                   
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="p-2 text-center">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
         </form>
         </div>
 
@@ -188,7 +190,7 @@
         }
         if(val=='CN')
         {
-            $('#PE_2L').html('<option selected value="CNE8"> AI-E8</option>')
+            $('#PE_2L').html('<option selected value="CNE8"> CN-E8</option>')
         }
         if(val=='CC')
         {

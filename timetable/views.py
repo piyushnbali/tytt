@@ -41,9 +41,11 @@ def tt(request):
             print(list(student_subjects))
             try:
                 context['lecture']=subject[0]
-                context['link']=(subject_link.objects.filter(Subject=subject[0]))[0].link
             except:
                 context['lecture']="Hurray No lecture"
+            try:
+                context['link']=(subject_link.objects.filter(Subject=subject[0]))[0].link
+            except:
                 context['link']="#"
             
             json_object = json.dumps(context, indent = 4)
@@ -80,7 +82,7 @@ def studentfill(request):
                         b.save()
             except:
                 pass
-            
+            return redirect('/')    
                 
     return render(request, 'timetable/studentform.html')              
 
