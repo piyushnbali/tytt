@@ -35,10 +35,13 @@ def tt(request):
             day=request.POST['day']
             ct= converttomin(int(hours),int(minute))
             subjects = timetable.objects.values_list('Subject', flat=True).filter(Day=day).filter(start_time_min__lte=int(ct)).filter(end_time_min__gte=int(ct))
+            all_subj = timetable.objects.values_list('Subject', flat=True).filter(Day=day)
             student_subjects= students.objects.values_list('Subject',flat=True).filter(roll_no = int(roll_no))
+            td_sub = common_member(list(all_subj),list(student_subjects))
             subject = common_member(list(subjects),list(student_subjects))
             print(list(subjects))
             print(list(student_subjects))
+            context['td_sub']= td_sub
             try:
                 context['lecture']=subject[0]
             except:
