@@ -39,19 +39,28 @@ def tt(request):
             student_subjects= students.objects.values_list('Subject',flat=True).filter(roll_no = int(roll_no))
             td_sub = common_member(list(all_subj),list(student_subjects))
             subject = common_member(list(subjects),list(student_subjects))
-            print(list(subjects))
-            print(list(student_subjects))
+            # print(list(subjects))
+            # print(list(student_subjects))
             context['td_sub']= td_sub
             try:
                 context['lecture']=subject[0]
             except:
                 context['lecture']="Hurray No lecture"
             try:
+                all_lectures_link = []
+                for s in td_sub:
+                    all_lectures_link.append((subject_link.objects.filter(Subject=s)).first().link)
+                context['links'] = all_lectures_link
+            except:
+                context['links'] = []
+            try:
                 context['link']=(subject_link.objects.filter(Subject=subject[0]))[0].link
+
             except:
                 context['link']="#"
             
             json_object = json.dumps(context, indent = 4)
+            print(json_object)
             return HttpResponse(json_object, content_type='application/json')
     
 
