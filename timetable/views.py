@@ -7,6 +7,15 @@ from table.models import timetable
 from table.models import students
 from table.models import subject_link
 
+class todaySubject:
+    def __init__(self,subjectName,Starttime,endtime,link):
+        self.subjectName = subjectName
+        self.Starttime = str(Starttime//60) +":" + str(Starttime%60)
+        self.endtime = str(endtime//60) +":" + str(endtime%60)
+        self.link = str(link)
+
+        
+
 
 def common_member(a, b): 
     a_set = set(a)
@@ -37,11 +46,27 @@ def tt(request):
             subjects = timetable.objects.values_list('Subject', flat=True).filter(Day=day).filter(start_time_min__lte=int(ct)).filter(end_time_min__gte=int(ct))
             all_subj = timetable.objects.values_list('Subject', flat=True).filter(Day=day)
             student_subjects= students.objects.values_list('Subject',flat=True).filter(roll_no = int(roll_no))
-            td_sub = common_member(list(all_subj),list(student_subjects))
+            td_subs = common_member(list(all_subj),list(student_subjects))
             subject = common_member(list(subjects),list(student_subjects))
             print(list(subjects))
             print(list(student_subjects))
-            context['td_sub']= td_sub
+            payload = []
+            for td_sub in td_subs:
+                load = {}
+                todaySubjectData = timetable.objects.filter(Subject=td_sub).filter(Day=day)
+                try :
+                    sublink = (subject_link.objects.filter(Subject=td_sub))[0].link
+                except:
+                    sublink= '#'    
+                obj = todaySubject(td_sub,todaySubjectData[0].start_time_min,todaySubjectData[0].end_time_min,sublink)
+                load['SubjectName']= obj.subjectName
+                load['Starttime'] = obj.Starttime
+                load['link'] = obj.link
+                load['Endtime'] = obj.endtime
+                del obj
+                payload.append(load)
+      
+            context['payload'] = payload
             try:
                 context['lecture']=subject[0]
             except:
@@ -52,6 +77,7 @@ def tt(request):
                 context['link']="#"
             
             json_object = json.dumps(context, indent = 4)
+            print(context)
             return HttpResponse(json_object, content_type='application/json')
     
 

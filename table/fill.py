@@ -1,6 +1,7 @@
 import xlrd
 from django.db import models
 from table.models import timetable
+
 loc = (r"E:\Working\timetable\PBTT.xls")
 wb = xlrd.open_workbook(loc)
 sheet = wb.sheet_by_index(0)

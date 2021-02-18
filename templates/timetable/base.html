@@ -61,7 +61,10 @@
     </div>
     <div class="row">
          <table class="table-subject text-center">
-          <thead><tr><td>Todays Subjects</td></tr></thead>
+          <thead><tr><td>Todays Subjects</td>
+            <td>StartTime</td>
+            <td>EndTime</td>
+            <td>Link</td></tr></thead>
          <tbody>
 
          </tbody>
@@ -107,10 +110,10 @@
             $('.lecture').html("<p>"+data.lecture+ "</p>")
             $('.lecture-link').attr("href",data.link)
             var td = ""
-            for(var i=0;i<data.td_sub.length;i++)
+            for(var i=0;i<data.payload.length;i++)
             {
-              td= td + "<tr><td>"+ data.td_sub[i] +  "</td></tr>" ;
-              console.log(data.td_sub[i])
+              td= td + "<tr>"+ "<td>"+ data.payload[i].SubjectName + "</td>" + "<td>"+ data.payload[i].Starttime + "</td>"+ "<td>"+ data.payload[i].Endtime + "</td>"+ "<td> <a href ="+ data.payload[i].link +'><button type="button"  class="btn btn-primary m-auto text-center" '  + ">Lecture</button></a>" +  "</td>"+  "</tr>" ;
+              
              }
             $('.table-subject tbody').html(td)
           },
