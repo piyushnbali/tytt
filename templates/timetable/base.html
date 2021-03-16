@@ -76,7 +76,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 
     <script>
+      function getCookie(cname) {
+        console.log("inside get cookie")
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
      $(document).ready(function(){
+       
+       $("#myInput").val(getCookie('roll_no'));
+
       $(document).ajaxStart(function(){
     $("#wait").css("display", "block");
   });
@@ -86,8 +105,8 @@
         $('#myBtn').click(function()
         {
           var roll_no=$("#myInput").val()
+          document.cookie="roll_no="+String(roll_no);
           console.log(roll_no)
-          $("#myInput").val('');
           var ct= new Date();
           var day =["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"]
           const token = document.querySelector('[name=csrfmiddlewaretoken]').value;

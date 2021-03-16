@@ -43,8 +43,8 @@ def tt(request):
             minute=request.POST['minute']
             day=request.POST['day']
             ct= converttomin(int(hours),int(minute))
-            subjects = timetable.objects.values_list('Subject', flat=True).filter(Day=day).filter(start_time_min__lte=int(ct)).filter(end_time_min__gte=int(ct))
-            all_subj = timetable.objects.values_list('Subject', flat=True).filter(Day=day)
+            subjects = timetable.objects.values_list('Subject', flat=True).filter(Day=day).filter(start_time_min__lte=int(ct)).filter(end_time_min__gte=int(ct)).order_by('start_time_min')
+            all_subj = timetable.objects.values_list('Subject', flat=True).filter(Day=day).order_by('start_time_min')
             student_subjects= students.objects.values_list('Subject',flat=True).filter(roll_no = int(roll_no))
             td_subs = common_member(list(all_subj),list(student_subjects))
             subject = common_member(list(subjects),list(student_subjects))
@@ -53,7 +53,7 @@ def tt(request):
             payload = []
             for td_sub in td_subs:
                 load = {}
-                todaySubjectData = timetable.objects.filter(Subject=td_sub).filter(Day=day)
+                todaySubjectData = timetable.objects.filter(Subject=td_sub).filter(Day=day).order_by('start_time_min')
                 try :
                     sublink = (subject_link.objects.filter(Subject=td_sub))[0].link
                 except:
