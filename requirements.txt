@@ -7,4 +7,4 @@ six==1.15.0
 soupsieve==2.1
 sqlparse==0.4.1
 tornado==6.1
-gunicorn==20.0.4
+gunicorn==20.1.0
